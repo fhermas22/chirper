@@ -1,16 +1,26 @@
 {
     "version": 2,
-    "functions": {
-      "api/index.php": {
-        "runtime": "vercel-php@0.6.0"
+    "builds": [
+      {
+        "src": "public/index.php",
+        "use": "@vercel/php"
       }
-    },
-    "routes": [
-      { "src": "/(.*)", "dest": "/api/index.php" }
     ],
-    "env": {
-      "APP_ENV": "production",
-      "APP_DEBUG": "true",
-      "APP_URL": "YOUR_APP_URL"
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/public/index.php"
+      }
+    ],
+    "build": {
+      "env": {
+        "APP_ENV": "production",
+        "APP_KEY": "base64:KGjVgrGPw1B4LZMqnSjofM0+O3HcikYSsy4A8Dk21hU=",
+        "APP_DEBUG": "false",
+        "APP_URL": "https://fh-chirper.vercel.app"
+      },
+      "commands": {
+        "build": "composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache"
+      }
     }
   }
