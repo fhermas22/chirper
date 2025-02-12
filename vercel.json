@@ -2,14 +2,14 @@
     "version": 2,
     "framework": null,
     "functions": {
-        "api/welcome.blade.php": {
+        "resources/views/welcome.blade.php": {
             "runtime": "vercel-php@0.7.2"
         }
     },
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/api/welcome.blade.php"
+            "dest": "/resources/views/welcome.blade.php"
         }
     ],
     "env": {
